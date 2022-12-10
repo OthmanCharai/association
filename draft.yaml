@@ -1,0 +1,37 @@
+models:
+  # ...
+  Widow:
+    name: string
+    cnss: string
+    cin: string unique
+    phone: string
+    address: text
+    priority: boolean
+    relationships:
+      hasMany: Child
+
+  Child:
+    username: string
+    gender: enum:Male,Female
+    birth_day: date
+    educated: boolean
+    vaccinated: boolean
+    widow_id: id foreign
+    sponsor_id: id foreign
+
+    relationships:
+      belongsTo: Widow, Sponsor
+
+  Sponsor:
+    name: string
+    relationships:
+      hasMany: Child
+
+controllers:
+  # ...
+  Child:
+    resource
+  Widow:
+    resource
+  Sponsor:
+    resource

@@ -1,0 +1,41 @@
+created:
+    - app/Http/Controllers/ChildController.php
+    - app/Http/Controllers/WidowController.php
+    - app/Http/Controllers/SponsorController.php
+    - database/factories/WidowFactory.php
+    - database/factories/ChildFactory.php
+    - database/factories/SponsorFactory.php
+    - database/migrations/2022_10_20_183217_create_widows_table.php
+    - database/migrations/2022_10_20_183218_create_children_table.php
+    - database/migrations/2022_10_20_183219_create_sponsors_table.php
+    - app/Models/Widow.php
+    - app/Models/Child.php
+    - app/Models/Sponsor.php
+    - tests/Feature/Http/Controllers/ChildControllerTest.php
+    - tests/Feature/Http/Controllers/WidowControllerTest.php
+    - tests/Feature/Http/Controllers/SponsorControllerTest.php
+    - app/Http/Requests/ChildStoreRequest.php
+    - app/Http/Requests/ChildUpdateRequest.php
+    - app/Http/Requests/WidowStoreRequest.php
+    - app/Http/Requests/WidowUpdateRequest.php
+    - app/Http/Requests/SponsorStoreRequest.php
+    - app/Http/Requests/SponsorUpdateRequest.php
+    - resources/views/child/index.blade.php
+    - resources/views/child/create.blade.php
+    - resources/views/child/show.blade.php
+    - resources/views/child/edit.blade.php
+    - resources/views/widow/index.blade.php
+    - resources/views/widow/create.blade.php
+    - resources/views/widow/show.blade.php
+    - resources/views/widow/edit.blade.php
+    - resources/views/sponsor/index.blade.php
+    - resources/views/sponsor/create.blade.php
+    - resources/views/sponsor/show.blade.php
+    - resources/views/sponsor/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Widow: { name: string, cnss: string, cin: 'string unique', phone: string, address: text, priority: boolean, relationships: { hasMany: Child } }
+    Child: { username: string, gender: 'enum:Male,Female', birth_day: date, educated: boolean, vaccinated: boolean, widow_id: 'id foreign', sponsor_id: 'id foreign', relationships: { belongsTo: 'Widow, Sponsor' } }
+    Sponsor: { name: string, relationships: { hasMany: Child } }
